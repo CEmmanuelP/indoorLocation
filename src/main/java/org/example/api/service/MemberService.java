@@ -33,7 +33,7 @@ public class MemberService {
     }
 
     public Optional<Member> myPage(String id){
-        return memberRepository.findById(id);
+        return memberRepository.findByUid(id);
     }
 
     public Member findByPhoneNumber(String phoneNumber){

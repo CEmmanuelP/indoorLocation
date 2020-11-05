@@ -22,9 +22,9 @@ public class MemberController {
         return memberService.getToken(uname);
     }
 
-    @GetMapping("/api/mypage/{id}")
-    public Optional<Member> myPage(@PathVariable String id){
-        return memberService.myPage(id);
+    @GetMapping("/api/mypage/{uid}")
+    public Optional<Member> myPage(@PathVariable String uid){
+        return memberService.myPage(uid);
     }
 
     @PostMapping("/api/register")
