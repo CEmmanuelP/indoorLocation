@@ -51,7 +51,7 @@ dependencies {
     compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
 }
 bootWar{
-    archiveBaseName = 'ojakSample3'
-    archiveFileName = 'ojakSample3.war'
+    archiveBaseName = 'ojakSample4'
+    archiveFileName = 'ojakSample4.war'
     archiveVersion = '0.0.0'
 }

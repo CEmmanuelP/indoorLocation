@@ -30,17 +30,9 @@ public class MemberTests {
             member.setUpassword("pw" + i);
             member.setUname("name" + i);
             member.setToken("token" + i);
-
-            MemberRole role = new MemberRole();
-            if(i <= 80){
-                role.setRoleName("BASIC");
-            }else{
-                role.setRoleName("ADMIN");
-            }
-            member.setRoles(Arrays.asList(role));
+            member.setPhoneNumber("0101234567" + i);
 
             memberRepository.save(member);
-
         }
     }
 }

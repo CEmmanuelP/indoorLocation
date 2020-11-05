@@ -1,6 +1,7 @@
 package org.example.api.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.example.api.domain.friend.Friend;
 import org.example.api.domain.member.Member;
 import org.example.api.dto.MessageDto;
 import org.example.api.service.MemberService;
@@ -8,10 +9,7 @@ import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -32,6 +30,13 @@ public class MemberController {
     @PostMapping("/api/register")
     public ResponseEntity<Member> save(@RequestBody Member member){
         return new ResponseEntity<Member>(memberService.save(member), HttpStatus.OK);
+    }
+
+    @GetMapping("/api/{phoneNumber}")
+    public String findByPhoneNumber(@PathVariable("phoneNumber")String phoneNumber){
+
+        String name = memberService.findByPhoneNumber(phoneNumber).getUname();
+        return name;
     }
 
     @PostMapping("/callApi")

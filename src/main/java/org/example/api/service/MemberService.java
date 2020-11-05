@@ -1,6 +1,7 @@
 package org.example.api.service;
 
 import lombok.RequiredArgsConstructor;
+import org.example.api.domain.friend.Friend;
 import org.example.api.domain.location.Location;
 import org.example.api.domain.member.GetToken;
 import org.example.api.domain.member.Member;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -32,5 +34,10 @@ public class MemberService {
 
     public Optional<Member> myPage(String id){
         return memberRepository.findById(id);
+    }
+
+    public Member findByPhoneNumber(String phoneNumber){
+        Member member = memberRepository.findByPhoneNumber(phoneNumber);
+        return member;
     }
 }
