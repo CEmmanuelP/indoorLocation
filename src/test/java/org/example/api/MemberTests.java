@@ -26,9 +26,7 @@ public class MemberTests {
     public void testInsert(){
         for(int i = 0; i <= 100; i++){
             Member member = new Member();
-            member.setUid("user" + i);
-            member.setUpassword("pw" + i);
-            member.setUname("name" + i);
+            member.setName("user" + i);
             member.setToken("token" + i);
             member.setPhoneNumber("0101234567" + i);
 

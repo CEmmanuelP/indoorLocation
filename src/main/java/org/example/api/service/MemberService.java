@@ -22,7 +22,7 @@ public class MemberService {
 
     public String getToken(String name){
 
-        GetToken getToken = memberRepository.findByUname(name);
+        GetToken getToken = memberRepository.findByName(name);
         String token = getToken.getToken();
         return token;
     }
@@ -32,12 +32,11 @@ public class MemberService {
         return member;
     }
 
-    public Optional<Member> myPage(String id){
-        return memberRepository.findByUid(id);
+    public Member myPage(String phoneNumber){
+        return memberRepository.findByPhoneNumber(phoneNumber);
     }
 
     public Member findByPhoneNumber(String phoneNumber){
-        Member member = memberRepository.findByPhoneNumber(phoneNumber);
-        return member;
+        return memberRepository.findByPhoneNumber(phoneNumber);
     }
 }

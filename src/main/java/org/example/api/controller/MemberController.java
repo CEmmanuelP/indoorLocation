@@ -1,7 +1,6 @@
 package org.example.api.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.api.domain.friend.Friend;
 import org.example.api.domain.member.Member;
 import org.example.api.dto.MessageDto;
 import org.example.api.service.MemberService;
@@ -22,28 +21,28 @@ public class MemberController {
         return memberService.getToken(uname);
     }
 
-    @GetMapping("/api/mypage/{uid}")
-    public Optional<Member> myPage(@PathVariable String uid){
-        return memberService.myPage(uid);
+    @GetMapping("/api/mypage/{phoneNumber}")
+    public Member myPage(@PathVariable String phoneNumber){
+        return memberService.myPage(phoneNumber);
     }
 
     @PostMapping("/api/register")
     public ResponseEntity<Member> save(@RequestBody Member member){
         return new ResponseEntity<Member>(memberService.save(member), HttpStatus.OK);
     }
-
-    @GetMapping("/api/{phoneNumber}")
-    public String findByPhoneNumber(@PathVariable("phoneNumber")String phoneNumber){
-
-        String name = memberService.findByPhoneNumber(phoneNumber).getUname();
+    //@PostMapping("/api/registerck")
+    @PostMapping("/api/registerck")
+    public String findByPhoneNumber(@RequestBody Member member){
+        String phoneNumber = member.getPhoneNumber();
+        String name = memberService.findByPhoneNumber(phoneNumber).getName();
         return name;
     }
 
-    @PostMapping("/callApi")
+    @PostMapping("/api/sendMessage")
     public String callApi(@ModelAttribute(value = "MessageDto") MessageDto message){
 
-        String uname = message.getTo();
-        String token = memberService.getToken(uname);
+        String name = message.getTo();
+        String token = memberService.getToken(name);
 
 
         String url = "https://fcm.googleapis.com/fcm/send";

@@ -18,35 +18,19 @@ import java.util.List;
 public class Member{
 
     @Id
-    private String uid;
-
-    //@Column(nullable = false)
-    private String upassword;
-
-    //@Column(nullable = false)
-    private String uname;
-
-    //@Column(nullable = false)
-    private String email;
-
-    //@Column(nullable = false)
     private String phoneNumber;
 
+    private String name;
+    //@Column(nullable = false)
+    private String email;
     //@Column(nullable = false)
     private String token;
-
     private Date birthday;
-    private Integer gender;
     private String image;
-    private String nickName;
 
     @CreationTimestamp
     private LocalDateTime regdate;
     @UpdateTimestamp
     private LocalDateTime updatedate;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "member")
-    private List<MemberRole> roles;
 
 }

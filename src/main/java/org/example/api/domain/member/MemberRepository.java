@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface MemberRepository extends JpaRepository<Member, String> {
-    GetToken findByUname(String uname);
+    GetToken findByName(String name);
     Member findByPhoneNumber(String phoneNumber);
-    Optional<Member> findByUid(String uid);
 }

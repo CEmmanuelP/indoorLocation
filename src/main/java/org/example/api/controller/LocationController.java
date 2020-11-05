@@ -40,8 +40,12 @@ public class LocationController {
         return new ResponseEntity<List<Location>>(locations, HttpStatus.OK);
     }
 
-    @PostMapping("/api/function1/{name}")
-    public List<Location> function1(@PathVariable("name") String name, @RequestBody Location location){
+    //@PostMapping("/api/locations")
+    @PostMapping("/api/locations")
+    public List<Location> function1(@RequestBody Location location){
+
+        String name = location.getName();
+
         Location locations = locationService.findByName(name);
 
         if(locations == null){
@@ -53,8 +57,12 @@ public class LocationController {
         return locationService.findAll();
     }
 
-    @PostMapping("/api/function2/{name}")
-    public List<Location> function2(@PathVariable("name") String name, @RequestBody Location location){
+    //@PostMapping("/api/locations_friend")
+    @PostMapping("/api/locations_friend")
+    public List<Location> function2(@RequestBody Location location){
+
+        String name = location.getName();
+
         Location locations = locationService.findByName(name);
 
         if(locations == null){
@@ -75,9 +83,6 @@ public class LocationController {
 
         return friendsLocation;
     }
-
-
-
 
     @GetMapping(value = "/api/location/findbyname/{name}", produces = {MediaType.APPLICATION_JSON_VALUE})
     public Location findByName(@PathVariable("name") String name){
